@@ -4,18 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <title>Calculadora IMC</title>
 
-  <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <main>
-    <h1>Cálculo de IMC</h1>
-
     <form>
+      <legend>Cálculo de IMC</legend>
+
       <fieldset>
         <div class="input-wrapper">
           <label for="">Peso (kg)</label>
@@ -33,19 +39,25 @@
         <img src="assets/icons/arrow-right.svg" alt="rigth arrow icon">
       </button>
     </form>
+  </main>
 
-    <div class="modal">
-      <img src="assets/icons/close.svg" alt="X for closing modal">
+  <div class="modal-wrapper open">
+    <div class="modal-card">
+      <button id="close">
+        <img src="assets/icons/close.svg" alt="X for closing modal">
+      </button>
 
       <p>Seu IMC é de <span id="imc-value">X</span></p>
     </div>
+  </div>
 
-    <div class="notification">
-      <p id="only-numbers">Digite somente números</p>
-      <p id="not-zero-weigth">Valor de Peso não pode ser 0</p>
-      <p id="not-zero-hight">Valor de Altura não pode ser 0</p>
-    </div>
-  </main>
+  <div class="notification">
+    <p id="only-numbers">Digite somente números</p>
+    <p id="not-zero-weigth">Valor de Peso deve ser maior que 0</p>
+    <p id="not-zero-hight">Valor de Altura deve ser maior que ser 0</p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
