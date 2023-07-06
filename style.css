@@ -129,6 +129,9 @@ form button {
   display: grid;
   place-items: center;
 
+  position: absolute;
+  inset: 0;
+
   visibility: hidden;
   opacity: 0;
 }
@@ -175,16 +178,34 @@ form button {
   line-height: 40rem;
 }
 
-form,
-main {
-  display: none;
+.notification {
+  background: var(--bg-notification);
+
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+
 }
 
-/* .modal {
-  display: none;
-} */
+.notification p {
+  color: var(--c-white);
+  font-size: 16rem;
+  font-weight: 700;
+  line-height: 20rem;
+  text-align: center;
 
+  padding: 8rem 0;
 
-.notification {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.notification.error {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hide {
   display: none;
 }
