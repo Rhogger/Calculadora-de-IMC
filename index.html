@@ -25,15 +25,15 @@
       <fieldset>
         <div class="input-wrapper">
           <label for="">Peso (kg)</label>
-          <input type="number" min="0" placeholder="72">
+          <input id="weight-input" type="number" min="0" placeholder="72">
         </div>
         <div class="input-wrapper">
           <label for="">Altura (cm)</label>
-          <input type="number" min="0" placeholder="165">
+          <input id="height-input" type="number" min="0" placeholder="165">
         </div>
       </fieldset>
 
-      <button>
+      <button id="btn-imc">
         Calcular IMC
 
         <img src="assets/icons/arrow-right.svg" alt="rigth arrow icon">
@@ -53,7 +53,7 @@
 
   <div class="notification error">
     <p class="hide" id="only-numbers">Digite somente números</p>
-    <p class="hide" id="not-zero-weigth">Valor de Peso deve ser maior que 0</p>
+    <p class="hide" id="not-zero-weight">Valor de Peso deve ser maior que 0</p>
     <p class="hide" id="not-zero-hight">Valor de Altura deve ser maior que ser 0</p>
   </div>
 
