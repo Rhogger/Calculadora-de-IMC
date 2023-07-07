@@ -177,6 +177,7 @@ form button {
   font-size: 32rem;
   font-weight: 700;
   line-height: 40rem;
+  flex-wrap: nowrap;
 }
 
 .notification {

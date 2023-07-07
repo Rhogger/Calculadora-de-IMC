@@ -15,6 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -25,11 +27,11 @@
       <fieldset>
         <div class="input-wrapper">
           <label for="">Peso (kg)</label>
-          <input id="weight-input" type="number" min="0" placeholder="72">
+          <input id="weight-input" type="number" min="0" max="100000" placeholder="72">
         </div>
         <div class="input-wrapper">
           <label for="">Altura (m)</label>
-          <input id="height-input" type="number" min="0" placeholder="165">
+          <input id="height-input" type="number" min="0" max="50" placeholder="165">
         </div>
       </fieldset>
 
@@ -47,19 +49,16 @@
         <img src="assets/icons/close.svg" alt="X for closing modal">
       </button>
 
-      <p>Seu IMC é de <span id="imc-value">X</span></p>
+      <p>Seu IMC é de <span id="imc-value"></span></p>
     </div>
   </div>
 
   <div class="notification error">
-    <p class="hide" id="error-1">Digite somente números</p>
-    <p class="hide" id="error-2">Valor de Peso deve ser maior que zero</p>
-    <p class="hide" id="error-3">Valor de Altura deve ser maior que ser zero</p>
+    <p class="hide" id="error-1">Valor de Peso deve ser maior que zero</p>
+    <p class="hide" id="error-2">Valor de Altura deve ser maior que ser zero</p>
+    <p class="hide" id="error-3">Valor do Peso e Altura devem ser maiores que zero</p>
     <p class="hide" id="error-4">Digite somente números e que sejam maiores que zero</p>
-    <p class="hide" id="error-5">Valor do Peso e Altura devem ser maiores que zero</p>
   </div>
-
-  <script src="script.js"></script>
 </body>
 
 </html>

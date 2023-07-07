@@ -7,6 +7,7 @@ const btnImc = document.querySelector('#btn-imc')
 
 // Modal
 const modal = document.querySelector('.modal-wrapper')
+const btnCloseModal = document.getElementById('close')
 let imc = document.querySelector('#imc-value')
 
 // Notification
@@ -15,7 +16,6 @@ const error_1 = document.querySelector('#error-1')
 const error_2 = document.querySelector('#error-2')
 const error_3 = document.querySelector('#error-3')
 const error_4 = document.querySelector('#error-4')
-const error_5 = document.querySelector('#error-5')
 
 
 // Events
@@ -23,43 +23,72 @@ const error_5 = document.querySelector('#error-5')
 btnImc.addEventListener('click', () => {
   event.preventDefault()
 
+  let errorIndicator = validateInput()
 
+  notification.classList.remove('error')
+  error_1.classList.add('hide')
+  error_2.classList.add('hide')
+  error_3.classList.add('hide')
+  error_4.classList.add('hide')
 
-  validateInput()
+  if (errorIndicator != '0,0,0')
+    showError(errorIndicator)
+  else {
+    imc.innerHTML = calculateIMC(Number(weightInput.value), Number(heightInput.value))
+    toggleModal()
+  }
 })
+
+btnCloseModal.addEventListener('click', toggleModal)
 
 // Functions
 
 function validateInput() {
-  let errorIndicator = []
+  let combinationError = []
 
   if (Number(weightInput.value) > 0 && weightInput.value != '') {
-    errorIndicator.push('0')
+    combinationError.push('0')
   } else {
-    errorIndicator.push('1')
+    combinationError.push('1')
   }
 
   if (Number(heightInput.value) > 0 && heightInput.value != '') {
-    errorIndicator.push('0')
+    combinationError.push('0')
   } else {
-    errorIndicator.push('1')
+    combinationError.push('1')
   }
 
   if (weightInput.validity.valid || heightInput.validity.valid) {
-    errorIndicator.push('0')
+    combinationError.push('0')
   } else {
-    errorIndicator.push('1')
+    combinationError.push('1')
   }
 
-  console.log(errorIndicator);
-  console.log(errorIndicator.toString());
-  console.log(errorIndicator.toString() === '1,1,1');
-
-  return errorIndicator
+  return combinationError.toString()
 }
 
-function showError() {
-  notification.classList.toggle('error')
+function showError(errorIndicator) {
+  notification.classList.add('error')
 
+  if (errorIndicator == '1,0,0')
+    error_1.classList.remove('hide')
 
+  else if (errorIndicator == '0,1,0')
+    error_2.classList.remove('hide')
+
+  else if (errorIndicator == '1,1,0')
+    error_3.classList.remove('hide')
+
+  else
+    error_4.classList.remove('hide')
+}
+
+function calculateIMC(weight, height) {
+  const imc = weight / height ** 2
+
+  return imc.toFixed(2)
+}
+
+function toggleModal() {
+  modal.classList.toggle('open')
 }
