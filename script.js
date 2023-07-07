@@ -11,9 +11,12 @@ let imc = document.querySelector('#imc-value')
 
 // Notification
 const notification = document.querySelector('.notification')
-const error_1 = document.querySelector('#only-numbers')
-const error_2 = document.querySelector('#not-zero-weight')
-const error_3 = document.querySelector('#not-zero-hight')
+const error_1 = document.querySelector('#error-1')
+const error_2 = document.querySelector('#error-2')
+const error_3 = document.querySelector('#error-3')
+const error_4 = document.querySelector('#error-4')
+const error_5 = document.querySelector('#error-5')
+
 
 // Events
 
@@ -28,16 +31,35 @@ btnImc.addEventListener('click', () => {
 // Functions
 
 function validateInput() {
+  let errorIndicator = []
+
   if (Number(weightInput.value) > 0 && weightInput.value != '') {
-    if (Number(heightInput.value) > 0 && heightInput.value != '') {
-      console.log('Inputs válidos');
-      return true
-    }
+    errorIndicator.push('0')
+  } else {
+    errorIndicator.push('1')
   }
 
-  return false
+  if (Number(heightInput.value) > 0 && heightInput.value != '') {
+    errorIndicator.push('0')
+  } else {
+    errorIndicator.push('1')
+  }
+
+  if (weightInput.validity.valid || heightInput.validity.valid) {
+    errorIndicator.push('0')
+  } else {
+    errorIndicator.push('1')
+  }
+
+  console.log(errorIndicator);
+  console.log(errorIndicator.toString());
+  console.log(errorIndicator.toString() === '1,1,1');
+
+  return errorIndicator
 }
 
 function showError() {
+  notification.classList.toggle('error')
+
 
 }
