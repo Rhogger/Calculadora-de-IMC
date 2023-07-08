@@ -121,6 +121,11 @@ form button {
   gap: 8rem;
 }
 
+form button:hover,
+form button:focus {
+  transform: scale(1.05);
+}
+
 .modal-wrapper {
   background-color: var(--bg-modal);
 
@@ -135,15 +140,21 @@ form button {
 
   visibility: hidden;
   opacity: 0;
+  transition: visibility 0s linear .3s, opacity .3s;
 }
 
 .modal-wrapper.open {
   visibility: visible;
   opacity: 1;
+  transition: visibility 0s linear, opacity .3s;
 }
 
 .modal-wrapper.open .modal-card {
   animation: show-modal .3s;
+}
+
+.modal-wrapper:not(.open) .modal-card {
+  animation: close-modal .3s;
 }
 
 .modal-card {
@@ -156,8 +167,6 @@ form button {
   border-radius: 6px;
 
   position: relative;
-
-  animation: close-modal .3s;
 }
 
 #close {
@@ -183,7 +192,6 @@ form button {
   font-size: 32rem;
   font-weight: 700;
   line-height: 40rem;
-  flex-wrap: nowrap;
 }
 
 .notification {
@@ -197,8 +205,8 @@ form button {
   visibility: hidden;
   opacity: 0;
 
-  transform: translateY(-30px);
-  transition: transform .4s;
+  transform: translateY(-50px);
+  transition: transform .3s, opacity .3s;
 }
 
 .notification p {
@@ -209,6 +217,8 @@ form button {
   text-align: center;
 
   padding: 8rem 0;
+
+  animation: alternate;
 }
 
 .notification.error {
@@ -216,12 +226,12 @@ form button {
   opacity: 1;
 
   transform: translateY(0);
+  transition: transform .3s, opacity .3s;
 }
 
-.notification:not(.error) {
-  transform: translateY(-30px);
-  transition: transform .4s;
-}
+/* .notification:not(.error) {
+  transform: translateY(-100%);
+} */
 
 .hide {
   display: none;
@@ -229,11 +239,11 @@ form button {
 
 @keyframes show-modal {
   0% {
-    transform: translateY(140px) scale(0.1);
+    transform: scale(0.1);
   }
 
   100% {
-    transform: translateY(0px) scale(1);
+    transform: scale(1);
   }
 }
 
