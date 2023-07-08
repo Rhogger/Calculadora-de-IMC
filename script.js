@@ -11,16 +11,16 @@ form.onsubmit = () => {
 
   let errorIndicator = validateInput()
 
-  Notification.Errors.close()
-  Notification.Errors.error_1.classList.add('hide')
-  Notification.Errors.error_2.classList.add('hide')
-  Notification.Errors.error_3.classList.add('hide')
-  Notification.Errors.error_4.classList.add('hide')
+  Notification.disableErrors()
 
-  if (errorIndicator != '0,0,0')
+  if (errorIndicator != '0,0,0') {
     Notification.showError(errorIndicator)
-  else {
-    Modal.imcValue.innerHTML = calculateIMC(Number(Inputs.weight.value), Number(Inputs.height.value))
-    Modal.open()
+  } else {
+    displayResultMessage()
   }
+}
+
+function displayResultMessage() {
+  Modal.imcValue.innerHTML = calculateIMC(Number(Inputs.weight.value), Number(Inputs.height.value))
+  Modal.open()
 }

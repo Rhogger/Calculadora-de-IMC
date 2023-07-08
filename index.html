@@ -16,7 +16,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <script src="script.js" defer></script>
+  <script src="./script.js" defer type="module"></script>
 </head>
 
 <body>
@@ -27,18 +27,18 @@
       <fieldset>
         <div class="input-wrapper">
           <label for="">Peso (kg)</label>
-          <input id="weight-input" type="number" min="0" max="100000" placeholder="72">
+          <input id="weight-input" type="number" min="0" max="1000" placeholder="72">
         </div>
         <div class="input-wrapper">
-          <label for="">Altura (m)</label>
-          <input id="height-input" type="number" min="0" max="50" placeholder="165">
+          <label for="">Altura (cm)</label>
+          <input id="height-input" type="number" min="0" max="500" placeholder="165">
         </div>
       </fieldset>
 
       <button id="btn-imc">
         Calcular IMC
 
-        <img src="assets/icons/arrow-right.svg" alt="rigth arrow icon">
+        <img src="assets/icons/arrow-right.svg" alt="right arrow icon">
       </button>
     </form>
   </main>

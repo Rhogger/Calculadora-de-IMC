@@ -26,7 +26,7 @@
 body {
   background-color: var(--bg-app);
 
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
 
   height: 100vh;
 
@@ -142,16 +142,22 @@ form button {
   opacity: 1;
 }
 
+.modal-wrapper.open .modal-card {
+  animation: show-modal .3s;
+}
+
 .modal-card {
   background-color: var(--bg-card);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10);
 
-  max-width: 400rem;
+  max-width: 700rem;
 
   padding: 48rem 64rem 64rem 64rem;
   border-radius: 6px;
 
   position: relative;
+
+  animation: close-modal .3s;
 }
 
 #close {
@@ -190,6 +196,9 @@ form button {
 
   visibility: hidden;
   opacity: 0;
+
+  transform: translateY(-30px);
+  transition: transform .4s;
 }
 
 .notification p {
@@ -205,8 +214,35 @@ form button {
 .notification.error {
   visibility: visible;
   opacity: 1;
+
+  transform: translateY(0);
+}
+
+.notification:not(.error) {
+  transform: translateY(-30px);
+  transition: transform .4s;
 }
 
 .hide {
   display: none;
+}
+
+@keyframes show-modal {
+  0% {
+    transform: translateY(140px) scale(0.1);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes close-modal {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
 }
