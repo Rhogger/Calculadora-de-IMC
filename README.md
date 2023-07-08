@@ -16,7 +16,7 @@
 
 <div align="center">
 
-![Preview](./assets/images/Screen-Default.png)
+![Preview](assets/Screen-Default.png)
 
 </div>
 
@@ -36,9 +36,9 @@ exports, functions, eventos, manipulação de listas de classes de um elemento, 
 Esse projeto é uma calculadora de IMC básica, que mostra o resultado em um modal e caso a entrada de
 dados seja inválida, apresenta também mensagens de erro, conforme as imagens.
 
-![Resultado do Cálculo](./assets/images/Screen-Modal.png.png)
+![Resultado do Cálculo](assets/Screen-Modal.png.png)
 
-![Mensagem de erro](./assets/images/Screen-Error.png.png)
+![Mensagem de erro](assets/Screen-Error.png.png)
 
 <br>
 <br>
