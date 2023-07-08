@@ -56,7 +56,7 @@ dados seja inválida, apresenta também mensagens de erro, conforme as imagens.
 
 Você pode visualizar o layout do projeto através
 [DESSE LINK](<https://www.figma.com/file/3sFMrfdgoRtFguu56Vy4JF/IMC-(Copy)?type=design&node-id=6%3A5&mode=design&t=TssdRJ3FxDyeeLMh-1>).
-É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+É necessário ter conta no [Figma](https://figma.com) para acessá-lo .
 
 <br>
 <br>
