@@ -36,9 +36,15 @@ exports, functions, eventos, manipulação de listas de classes de um elemento, 
 Esse projeto é uma calculadora de IMC básica, que mostra o resultado em um modal e caso a entrada de
 dados seja inválida, apresenta também mensagens de erro, conforme as imagens.
 
-![Resultado do Cálculo](assets/Screen-Modal.png.png)
+<br>
 
-![Mensagem de erro](assets/Screen-Error.png.png)
+<div align="center">
+
+![Resultado do Cálculo](assets/Screen-Modal.png)
+
+![Mensagem de erro](assets/Screen-Error.png)
+
+</div>
 
 <br>
 <br>
