@@ -1,94 +1,103 @@
-// Inputs
-let weightInput = document.querySelector('#weight-input')
-let heightInput = document.querySelector('#height-input')
-
 // Button de submit
-const btnImc = document.querySelector('#btn-imc')
+const form = document.querySelector('form')
+
+// Inputs
+const Inputs = {
+  weight: document.querySelector('#weight-input'),
+  height: document.querySelector('#height-input')
+}
 
 // Modal
-const modal = document.querySelector('.modal-wrapper')
-const btnCloseModal = document.getElementById('close')
-let imc = document.querySelector('#imc-value')
+const Modal = {
+  wrapper: document.querySelector('.modal-wrapper'),
+  imcValue: document.querySelector('#imc-value'),
+  buttonClose: document.getElementById('close'),
+
+  open() {
+    Modal.wrapper.classList.add('open')
+  },
+  close() {
+    Modal.wrapper.classList.remove('open')
+  }
+}
 
 // Notification
-const notification = document.querySelector('.notification')
-const error_1 = document.querySelector('#error-1')
-const error_2 = document.querySelector('#error-2')
-const error_3 = document.querySelector('#error-3')
-const error_4 = document.querySelector('#error-4')
+const Errors = {
+  notification: document.querySelector('.notification'),
+  error_1: document.querySelector('#error-1'),
+  error_2: document.querySelector('#error-2'),
+  error_3: document.querySelector('#error-3'),
+  error_4: document.querySelector('#error-4')
+}
 
 
 // Events
 
-btnImc.addEventListener('click', () => {
+form.onsubmit = () => {
   event.preventDefault()
 
   let errorIndicator = validateInput()
 
-  notification.classList.remove('error')
-  error_1.classList.add('hide')
-  error_2.classList.add('hide')
-  error_3.classList.add('hide')
-  error_4.classList.add('hide')
+  Errors.notification.classList.remove('error')
+  Errors.error_1.classList.add('hide')
+  Errors.error_2.classList.add('hide')
+  Errors.error_3.classList.add('hide')
+  Errors.error_4.classList.add('hide')
 
   if (errorIndicator != '0,0,0')
     showError(errorIndicator)
   else {
-    imc.innerHTML = calculateIMC(Number(weightInput.value), Number(heightInput.value))
-    toggleModal()
+    Modal.imcValue.innerHTML = calculateIMC(Number(Inputs.weight.value), Number(Inputs.height.value))
+    Modal.open()
   }
-})
+}
 
-btnCloseModal.addEventListener('click', toggleModal)
+Modal.buttonClose.onclick = () => Modal.close()
 
 // Functions
 
 function validateInput() {
-  let combinationError = []
+  let combinationErrors = []
 
-  if (Number(weightInput.value) > 0 && weightInput.value != '') {
-    combinationError.push('0')
+  if (Number(Inputs.weight.value) > 0 && Inputs.weight.value != '') {
+    combinationErrors.push('0')
   } else {
-    combinationError.push('1')
+    combinationErrors.push('1')
   }
 
-  if (Number(heightInput.value) > 0 && heightInput.value != '') {
-    combinationError.push('0')
+  if (Number(Inputs.height.value) > 0 && Inputs.height.value != '') {
+    combinationErrors.push('0')
   } else {
-    combinationError.push('1')
+    combinationErrors.push('1')
   }
 
-  if (weightInput.validity.valid || heightInput.validity.valid) {
-    combinationError.push('0')
+  if (Inputs.weight.validity.valid || Inputs.height.validity.valid) {
+    combinationErrors.push('0')
   } else {
-    combinationError.push('1')
+    combinationErrors.push('1')
   }
 
-  return combinationError.toString()
+  return combinationErrors.toString()
 }
 
 function showError(errorIndicator) {
-  notification.classList.add('error')
+  Errors.notification.classList.add('error')
 
   if (errorIndicator == '1,0,0')
-    error_1.classList.remove('hide')
+    Errors.error_1.classList.remove('hide')
 
   else if (errorIndicator == '0,1,0')
-    error_2.classList.remove('hide')
+    Errors.error_2.classList.remove('hide')
 
   else if (errorIndicator == '1,1,0')
-    error_3.classList.remove('hide')
+    Errors.error_3.classList.remove('hide')
 
   else
-    error_4.classList.remove('hide')
+    Errors.error_4.classList.remove('hide')
 }
 
 function calculateIMC(weight, height) {
-  const imc = weight / height ** 2
+  const imc = weight / (height / 100) ** 2
 
   return imc.toFixed(2)
-}
-
-function toggleModal() {
-  modal.classList.toggle('open')
 }
